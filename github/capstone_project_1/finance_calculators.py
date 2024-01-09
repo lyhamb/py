@@ -1,10 +1,24 @@
 # Import math module
 import math
 
+### Example of validation function
+def get_valid_number():
+    while True:
+        user_input = input("Enter a number: ")
+        try:
+            user_float = float(user_input)
+            if user_float > 0:
+                return user_float
+        except ValueError:
+            print("Enter a valid number greater than 0")
+
+### Call function and assign output to variable e.g.
+interest_rate = get_valid_number()
+
 # Display options for user and ask them to select one
 print("investment\t - to calculate the amount of interest you'll earn on your investment")
 print("bond\t\t - to calculate the amount you'll have to pay on a home loan\n")
-choose_program = input("Enter either 'investment' or 'bond' from "
+choose_program = input("Enter either 'investment' or 'bond' from " ### Move into the loop
                        "the menu above to proceed: ").lower()
 
 while True:
@@ -52,7 +66,7 @@ while True:
         while True: # Begin data validation for interest type
             interest = input("Please enter 'Simple' or 'Compound' interest: ").lower()
 
-            # Calculate simple investment interest
+            # Calculate simple investment interest ### Inefficient, move the calculations into the if statements 
             interest_simple = round(investment_amount *
                                 (1 + (investment_rate / 100) * investment_years), 2)
 
@@ -126,5 +140,5 @@ while True:
 
     else: # if an invalid program is entered then repeat the question
         print("\nInvalid input.")
-        choose_program = input("Enter either 'investment' or 'bond' from "
+        choose_program = input("Enter either 'investment' or 'bond' from " ### This is repeated 
                                "the menu above to proceed: ").lower()
